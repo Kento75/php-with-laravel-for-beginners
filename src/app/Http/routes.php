@@ -14,3 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return "hi about page";
+});
+
+Route::get('/contact', function () {
+    return "hi contact page";
+});
+
+Route::get('/post/{id}/{name}', function ($id, $name) {
+    return "hi post page id is $id and name is $name";
+});
+
+// ルートに対してネームスペースを使用する例
+// 'as'=>'naming' でできる
+Route::get('/admin/posts/example', array('as'=>'admin.home', function() {
+    $url = route('admin.home');
+
+    return "this url is $url";
+}));
+
+
+Route::group(['middleware' => ['web']], function () {
+
+});
