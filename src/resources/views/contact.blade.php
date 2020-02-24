@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.php')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('content')
+    <h1>Contact Page</h1>
 
-    </head>
-    <body>
-        <div class="container">
-            <h1>Contact Page</h1>
-        </div>
-    </body>
-</html>
+    @if(!count($people))
+        @foreach ($people as $person)
+          <li>{{$person}}</li>
+        @endforeach
+    @endif
+@stop
+
+@section('footer')
+
+@stop

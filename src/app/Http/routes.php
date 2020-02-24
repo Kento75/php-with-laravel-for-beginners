@@ -16,9 +16,9 @@ Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/about', function () {
 //     return "hi about page";
