@@ -13,7 +13,7 @@ class AddIsAdminToPostsTables extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->tinyInteger('is_admin')->default(0);
+            $table->softDeletes();
         });
     }
 
@@ -25,7 +25,7 @@ class AddIsAdminToPostsTables extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('is_admin');
+            $table->dropColumn('deleted_at');
         });
     }
 }

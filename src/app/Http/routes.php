@@ -114,11 +114,57 @@ use App\Post;
 //     $post->save();
 // });
 
-Route::get('/basicupdate', function() {
-    $post = Post::find(2);
+// Route::get('/basicupdate', function() {
+//     $post = Post::find(2);
 
-    $post->title = "New Eloquent title insert 2";
-    $post->content = 'Wow Eloquent is really 2';
-    $post->save();
+//     $post->title = "New Eloquent title insert 2";
+//     $post->content = 'Wow Eloquent is really 2';
+//     $post->save();
+// });
+
+// Route::get('/create', function() {
+//     Post::create(['title' => 'WOW create!!!!', 'content' => 'content !!!!!!']);
+// });
+
+// Route::get('/update', function() {
+//     Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'NEW PHP TITLE', 'content'=>'I love my instructor Edwin']);
+// });
+
+// Route::get('/delete', function() {
+//     $post = Post::find(1);
+//     $post->delete();
+// });
+
+// Route::get('/delete2', function() {
+//     Post::destroy(1);
+//     Post::where('id_admin', 0)->delete();
+// });
+
+// // softDeletes有効の場合に以下のroutesにいくと、deleted_atが更新される。
+// Route::get('/softdelete', function() {
+//     Post::find(1)->delete();
+// });
+// // 論理削除したレコードを含む検索取得
+// // withTrashed使わない場合、論理削除されたレコードは検索対象から外れる。
+// Route::get('/readsoftdelete', function() {
+//     $post = Post::withTrashed()->where('id', 1)->get();
+
+//     return $post;
+// });
+
+// // 論理削除されたレコードのみ対象とする
+// Route::get('/readsoftdelete2', function() {
+//     $post = Post::onlyTrashed()->where('id', 1)->get();
+
+//     return $post;
+// });
+// // deleted_atをnullに更新
+// // 論理削除から復旧
+// Route::get('/restore', function() {
+//     Post::withTrashed()->where('is_admin', 0)->restore();
+// });
+
+// 論理削除されたレコードを物理削除
+Route::get('/forcedelete', function() {
+    Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
 });
-
