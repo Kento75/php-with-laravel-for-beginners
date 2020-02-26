@@ -2,6 +2,7 @@
 
 // use Illuminate\Support\Facades\DB;
 use App\Post;
+use App\User;
 
 /**
  * DATABASE Raw SQL Queries
@@ -164,7 +165,14 @@ use App\Post;
 //     Post::withTrashed()->where('is_admin', 0)->restore();
 // });
 
-// 論理削除されたレコードを物理削除
-Route::get('/forcedelete', function() {
-    Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+// // 論理削除されたレコードを物理削除
+// Route::get('/forcedelete', function() {
+//     Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+// });
+
+
+// 1:1
+// user -> postのtitle
+Route::get('/user/{id}/post', function($id) {
+    return User::find($id)->post->title;
 });
