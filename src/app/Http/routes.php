@@ -171,12 +171,27 @@ use App\User;
 // });
 
 
-// 1:1
-// user -> postのtitle
-Route::get('/user/{id}/post', function($id) {
-    return User::find($id)->post->title;
-});
+// // 1:1
+// // user -> postのtitle
+// Route::get('/user/{id}/post', function($id) {
+//     return User::find($id)->post->title;
+// });
 
-Route::get('/post/{id}/user', function($id) {
-    return Post::find($id)->user->name;
+// Route::get('/post/{id}/user', function($id) {
+//     return Post::find($id)->user->name;
+// });
+
+// // 1 : n
+// Route::get('/posts', function() {
+//     $user = User::find(1);
+
+//     foreach($user->posts as $post) {
+//         return $this->hasOne('App\Post');
+//     }
+// });
+
+// n : n
+Route::get('/user/{id}/role', function($id) {
+    $user = User::find($id)->orderBy('id', 'desc')->get();
+    return $user;
 });
