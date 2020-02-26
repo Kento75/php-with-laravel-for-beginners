@@ -176,3 +176,7 @@ use App\User;
 Route::get('/user/{id}/post', function($id) {
     return User::find($id)->post->title;
 });
+
+Route::get('/post/{id}/user', function($id) {
+    return Post::find($id)->user->name;
+});
