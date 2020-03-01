@@ -3,6 +3,7 @@
 // use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\User;
+use App\Country;
 
 /**
  * DATABASE Raw SQL Queries
@@ -190,8 +191,24 @@ use App\User;
 //     }
 // });
 
-// n : n
-Route::get('/user/{id}/role', function($id) {
-    $user = User::find($id)->orderBy('id', 'desc')->get();
-    return $user;
+// // n : n
+// Route::get('/user/{id}/role', function($id) {
+//     $user = User::find($id)->orderBy('id', 'desc')->get();
+//     return $user;
+// });
+
+Route::get('/user/pivot', function() {
+    $user = User::find(1);
+
+    foreach($user->roles as $role) {
+        return $role->pivot->created_at;
+    }
+});
+
+Route::get('/user/country', function() {
+    $country = Country::find(1);
+
+    foreach($country->posts as $post) {
+        return $post->title;
+    }
 });
