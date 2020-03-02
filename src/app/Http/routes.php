@@ -4,6 +4,7 @@
 use App\Post;
 use App\User;
 use App\Country;
+use App\Tag;
 
 /**
  * DATABASE Raw SQL Queries
@@ -197,18 +198,24 @@ use App\Country;
 //     return $user;
 // });
 
-Route::get('/user/pivot', function() {
-    $user = User::find(1);
+// Route::get('/user/pivot', function() {
+//     $user = User::find(1);
 
-    foreach($user->roles as $role) {
-        return $role->pivot->created_at;
-    }
+//     foreach($user->roles as $role) {
+//         return $role->pivot->created_at;
+//     }
+// });
+
+// Route::get('/user/country', function() {
+//     $country = Country::find(1);
+
+//     foreach($country->posts as $post) {
+//         return $post->title;
+//     }
+// });
+
+Route::get('/tag/post', function() {
+    $tag = Tag::find(2);
 });
 
-Route::get('/user/country', function() {
-    $country = Country::find(1);
 
-    foreach($country->posts as $post) {
-        return $post->title;
-    }
-});
